@@ -1,3 +1,8 @@
-Pawel	Pri	111-123-456	Notatka tatka
+Pawel el	Pri	111-123-456	Notatka tatka
 John	Smith	222-333-777	Note e e e
-Rob	Maklowicz	333-456-111	eeeeee
+Rob ob	Maklowicz	333-456-111	eeeeee
+Mr Johny	Blomki	111-333-1	Johnys Notes
+Mark	Twain	123	Note
+Johny	Bravo		WIthout Phone Number
+			Empy fields
+aa	cc	123	nnn

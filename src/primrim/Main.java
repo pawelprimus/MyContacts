@@ -36,13 +36,24 @@ public class Main extends Application {
 
     @Override
     public void init() throws  Exception{
+
+        try {
             ContactData.getInstance().loadContactsData();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
     @Override
     public void stop() throws Exception {
+        try {
+            ContactData.getInstance().storeContactData();
 
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 

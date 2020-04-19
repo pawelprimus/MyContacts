@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import primrim.datamodel.Contact;
 import primrim.datamodel.ContactData;
 
-import java.time.LocalDate;
 
 public class dialogController {
 
