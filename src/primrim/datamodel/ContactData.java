@@ -101,14 +101,4 @@ public class ContactData {
 
 
 
-    /*public void loadTodoItems(){
-        Contact contact1 = new Contact("Pawel", "P", "111", "Notatka");
-        Contact contact2 = new Contact("Wojtek", "Pr", "222", "Note");
-        Contact contact3 = new Contact("Rob", "Maklowicz", "33", "eeeeee");
-
-        contacts.add(contact1);
-
-    }*/
-
-
 }
