@@ -36,7 +36,8 @@ public class Main extends Application {
 
     @Override
     public void init() throws  Exception{
-            ContactData.getInstance().loadContacts();
+            ContactData.getInstance().loadContactsData();
+
     }
 
     @Override
