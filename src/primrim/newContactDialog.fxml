@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <DialogPane fx:controller="primrim.dialogController"
             xmlns:fx="http://javafx.com/fxml">
     <headerText>
-        We could put instructions here
+        Fill at least one field
     </headerText>
     <content>
         <GridPane vgap="10" hgap="10">

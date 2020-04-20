@@ -61,8 +61,6 @@ public class Controller {
                             deleteContact(contact);
                         }
                     });
-
-
                     System.out.println(contact.toString());
                 }
             }
@@ -101,9 +99,16 @@ public class Controller {
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
         Optional<ButtonType> result = dialog.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
+        if (result.isPresent() && result.get() == ButtonType.OK ) {
             dialogController controller = fxmlLoader.getController();
-            Contact contact = controller.processResults();
+
+            if(controller.isDataValid()){
+            Contact contact = controller.processResults();  // if all of fields are fill -> ProcessResults ( addind new contact to contact data)
+            }else {
+                System.out.println("Data is not correct"); // if not system out println ------------------------------------------ to develop
+            }
+
+
         } else {
             System.out.println("Adding new contact canceled");
         }

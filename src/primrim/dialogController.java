@@ -36,4 +36,16 @@ public class dialogController {
         return contact;
     }
 
+
+    public boolean isDataValid(){
+
+        if(firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || phoneNumberField.getText().isEmpty() || notesField.getText().isEmpty() ){
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+
 }
