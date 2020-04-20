@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("mainwindow.fxml"));
 
         setUserAgentStylesheet(STYLESHEET_MODENA);
@@ -29,13 +29,11 @@ public class Main extends Application {
         launch(args);
 
 
-
     }
 
 
-
     @Override
-    public void init() throws  Exception{
+    public void init() throws Exception {
 
         try {
             ContactData.getInstance().loadContactsData();
@@ -56,7 +54,6 @@ public class Main extends Application {
         }
 
     }
-
 
 
 }

@@ -35,19 +35,6 @@ public class ContactData {
         return instance;
     }
 
-    public void loadContacts() {
-
-        contacts = FXCollections.observableArrayList();
-
-        Contact contact1 = new Contact("Pawel", "Pri", "111-123-456", "Notatka tatka");
-        Contact contact2 = new Contact("John", "Smith", "222-333-777", "Note e e e");
-        Contact contact3 = new Contact("Rob", "Maklowicz", "333-456-111", "eeeeee");
-
-        contacts.add(contact1);
-        contacts.add(contact2);
-        contacts.add(contact3);
-
-    }
 
     public void loadContactsData() throws IOException {
         contacts = FXCollections.observableArrayList();
@@ -98,7 +85,6 @@ public class ContactData {
             }
         }
     }
-
 
 
 }

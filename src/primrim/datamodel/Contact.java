@@ -45,6 +45,17 @@ public class Contact {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    @Override
+    public String toString() {
+        return "[" +
+                " First Name: " + firstName +
+                " Last Name: " + lastName +
+                " Phone Number: " + phoneNumber +
+                " Notes: " + notes +
+                " ]";
+
+    }
 }
 
 

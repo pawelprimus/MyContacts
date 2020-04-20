@@ -53,7 +53,7 @@
         </VBox>
     </top>
     <center>
-        <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" onKeyPressed="#handleKeyPressed">
             <columns>
                 <TableColumn prefWidth="75.0" text="First Name">
                     <cellValueFactory>
