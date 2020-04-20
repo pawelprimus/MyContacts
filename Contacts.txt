@@ -1,6 +1,4 @@
+BBB	Validation	123	456
 Pawel el	Pri	111-123-456	Notatka tatka
-Johny	Bravo		WIthout Phone Number
-John	Smith	222-333-777	Note e e e
 aa	cc	123	nnn
-John	Smith	222-333-777	Note e e e
-aa	bb	cc	dd
+a	a	a	a

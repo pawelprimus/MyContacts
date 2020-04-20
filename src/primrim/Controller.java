@@ -1,15 +1,13 @@
 package primrim;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Side;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -19,12 +17,11 @@ import primrim.datamodel.Contact;
 import primrim.datamodel.ContactData;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 
 public class Controller {
+
 
 
     @FXML
@@ -33,12 +30,26 @@ public class Controller {
     @FXML
     private TableView<Contact> tableView;
 
+    @FXML
+    private TableColumn<Contact, String> firstNameColumn;
+
+    @FXML
+    private TableColumn<Contact, String> lastNameColumn;
+
+    @FXML
+    private TableColumn<Contact, String> phoneNumberColumn;
+
+    @FXML
+    private TableColumn<Contact, String> notesColumn;
 
     @FXML
     private BorderPane mainBorderPane;
 
 
     public void initialize() {
+
+
+       firstNameColumn.setCellValueFactory(new PropertyValueFactory<Contact, String>("firstName"));
 
 
         contextMenu = new ContextMenu();
@@ -54,6 +65,7 @@ public class Controller {
                 if(t.getButton() == MouseButton.SECONDARY) {
                     contextMenu.show(tableView, t.getScreenX(), t.getScreenY());
                     Contact contact = tableView.getSelectionModel().getSelectedItem();
+                    System.out.println(tableView.getSelectionModel().getSelectedCells());
 
                     menuItemDelete.setOnAction(new EventHandler<ActionEvent>() {
                         public void handle(ActionEvent e) {
@@ -66,13 +78,15 @@ public class Controller {
             }
         });
 
-       // listContextMenu.getItems().addAll(deleteMenuItem);
-
 
         tableView.setItems(ContactData.getInstance().getContacts());
 
+        tableView.setEditable(true);
 
-
+        firstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        phoneNumberColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        notesColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
     }
@@ -99,12 +113,12 @@ public class Controller {
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
         Optional<ButtonType> result = dialog.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK ) {
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             dialogController controller = fxmlLoader.getController();
 
-            if(controller.isDataValid()){
-            Contact contact = controller.processResults();  // if all of fields are fill -> ProcessResults ( addind new contact to contact data)
-            }else {
+            if (controller.isDataValid()) {
+                controller.processResults();  // if all of fields are fill -> ProcessResults ( adding new contact to contact data)
+            } else {
                 System.out.println("Data is not correct"); // if not system out println ------------------------------------------ to develop
             }
 
@@ -143,8 +157,28 @@ public class Controller {
                 deleteContact(selectedContact);
             }
         }
-
     }
+
+    public void changeFirstNameCellEvent(TableColumn.CellEditEvent edittedCell){
+        Contact contactSelected = tableView.getSelectionModel().getSelectedItem();
+        contactSelected.setFirstName(edittedCell.getNewValue().toString());
+    }
+
+    public void changeLastNameCellEvent(TableColumn.CellEditEvent edittedCell){
+        Contact contactSelected = tableView.getSelectionModel().getSelectedItem();
+        contactSelected.setLastName(edittedCell.getNewValue().toString());
+    }
+
+    public void changePhoneNumberCellEvent(TableColumn.CellEditEvent edittedCell){
+        Contact contactSelected = tableView.getSelectionModel().getSelectedItem();
+        contactSelected.setPhoneNumber(edittedCell.getNewValue().toString());
+    }
+
+    public void changeNotesCellEvent(TableColumn.CellEditEvent edittedCell){
+        Contact contactSelected = tableView.getSelectionModel().getSelectedItem();
+        contactSelected.setNotes(edittedCell.getNewValue().toString());
+    }
+
 
 
 }

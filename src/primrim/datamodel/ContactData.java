@@ -2,6 +2,8 @@ package primrim.datamodel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,6 +15,7 @@ import java.time.LocalDate;
 import java.util.Iterator;
 
 public class ContactData {
+
 
     private static ContactData instance = new ContactData();
     private static String filename = "Contacts.txt";
@@ -37,6 +40,8 @@ public class ContactData {
 
 
     public void loadContactsData() throws IOException {
+
+
         contacts = FXCollections.observableArrayList();
         Path path = Paths.get(filename);
         BufferedReader br = Files.newBufferedReader(path);

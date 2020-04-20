@@ -1,5 +1,11 @@
 package primrim.datamodel;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.Button;
+import primrim.Controller;
+
+import java.beans.EventHandler;
+
 public class Contact {
 
     private String firstName;
@@ -7,11 +13,18 @@ public class Contact {
     private String phoneNumber;
     private String notes;
 
-    public Contact(String firstName, String lastName, String phoneNumber, String notes) {
+
+
+
+
+
+    public Contact(String firstName, String lastName, String phoneNumber, String notes ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.notes = notes;
+
+
     }
 
     public String getFirstName() {

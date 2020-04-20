@@ -6,16 +6,13 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.control.Tooltip?>
-<BorderPane fx:id="mainBorderPane" fx:controller="primrim.Controller" maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="primrim.Controller">
     <top>
         <VBox prefHeight="80.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
@@ -23,61 +20,60 @@
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Exit" onAction="#handleExit"/>
+                                <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Delete"/>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="About"/>
+                                <MenuItem mnemonicParsing="false" text="About" />
                             </items>
                         </Menu>
                     </menus>
                 </MenuBar>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="150.0" text="Add New Contact"
-                                onAction="#showNewContactDialog">
+                        <Button mnemonicParsing="false" onAction="#showNewContactDialog" prefHeight="33.0" prefWidth="150.0" text="Add New Contact">
                             <tooltip>
-                                <Tooltip text="Add new contact"/>
+                                <Tooltip text="Add new contact" />
                             </tooltip>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="Button"/>
+                        <Button fx:id="updateButton" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="Update" />
                     </children>
                 </HBox>
             </children>
         </VBox>
     </top>
     <center>
-        <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" onKeyPressed="#handleKeyPressed">
+        <TableView fx:id="tableView"  onKeyPressed="#handleKeyPressed" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn prefWidth="75.0" text="First Name">
+                <TableColumn fx:id="firstNameColumn"  onEditCommit="#changeFirstNameCellEvent" prefWidth="75.0" text="First Name">
                     <cellValueFactory>
-                        <PropertyValueFactory property="firstName"/>
+                        <PropertyValueFactory property="firstName" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="Last Name">
+                <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Last Name">
                     <cellValueFactory>
-                        <PropertyValueFactory property="lastName"/>
+                        <PropertyValueFactory property="lastName" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="Phone Number">
+                <TableColumn fx:id="phoneNumberColumn" prefWidth="75.0" text="Phone Number">
                     <cellValueFactory>
-                        <PropertyValueFactory property="phoneNumber"/>
+                        <PropertyValueFactory property="phoneNumber" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="Notes">
+                <TableColumn fx:id="notesColumn" prefWidth="75.0" text="Notes">
                     <cellValueFactory>
-                        <PropertyValueFactory property="notes"/>
+                        <PropertyValueFactory property="notes" />
                     </cellValueFactory>
                 </TableColumn>
             </columns>
             <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
     </center>
