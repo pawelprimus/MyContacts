@@ -7,10 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Side;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import primrim.datamodel.Contact;
 import primrim.datamodel.ContactData;
@@ -25,7 +28,7 @@ public class Controller {
 
 
     @FXML
-    private ContextMenu listContextMenu;
+    private ContextMenu contextMenu;
 
     @FXML
     private TableView<Contact> tableView;
@@ -38,13 +41,30 @@ public class Controller {
     public void initialize() {
 
 
-       // listContextMenu = new ContextMenu();
-        MenuItem deleteMenuItem = new MenuItem("Delete");
-        deleteMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+        contextMenu = new ContextMenu();
+        MenuItem menuItemEdit = new MenuItem("Edit");
+        contextMenu.getItems().add(menuItemEdit);
+        MenuItem menuItemDelete = new MenuItem("Delete");
+        contextMenu.getItems().add(menuItemDelete);
+
+        tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
             @Override
-            public void handle(ActionEvent actionEvent) {
-                Contact contact = tableView.getSelectionModel().getSelectedItem();
-                deleteContact(contact);
+            public void handle(MouseEvent t) {
+                if(t.getButton() == MouseButton.SECONDARY) {
+                    contextMenu.show(tableView, t.getScreenX(), t.getScreenY());
+                    Contact contact = tableView.getSelectionModel().getSelectedItem();
+
+                    menuItemDelete.setOnAction(new EventHandler<ActionEvent>() {
+                        public void handle(ActionEvent e) {
+                            System.out.println("Menu Item delete is clicked");
+                            deleteContact(contact);
+                        }
+                    });
+
+
+                    System.out.println(contact.toString());
+                }
             }
         });
 
@@ -52,6 +72,9 @@ public class Controller {
 
 
         tableView.setItems(ContactData.getInstance().getContacts());
+
+
+
 
 
     }
